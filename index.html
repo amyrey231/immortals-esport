@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IMMORTALS ESPORT | Official CODM Clan</title>
   
+  <!-- Website Favicon / Head Icon -->
+  <link rel="icon" type="image/jpeg" href="Immortals Logo (1).jpg">
+  <link rel="apple-touch-icon" href="Immortals Logo (1).jpg">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -41,7 +45,6 @@
         linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
       background-size: 100% 100%, 40px 40px, 40px 40px;
     }
-    /* Smooth Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -57,11 +60,11 @@
 <body class="text-gray-200 antialiased selection:bg-brandRed selection:text-white overflow-x-hidden">
 
   <!-- ================= 1. HEADER / NAVBAR ================= -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-brandDark/90 backdrop-blur-md border-b border-brandRed/20">
+  <header class="fixed top-0 left-0 w-full z-40 bg-brandDark/95 backdrop-blur-md border-b border-brandRed/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Logo -->
-      <a href="#home" class="flex items-center gap-3 group z-50">
+      <a href="#home" class="flex items-center gap-3 group">
         <div class="w-10 h-10 rounded-full border border-brandRed/50 p-1 group-hover:shadow-red-glow transition-all duration-300">
           <img src="Immortals Logo (1).jpg" alt="Immortals Logo" class="w-full h-full object-contain rounded-full">
         </div>
@@ -84,33 +87,57 @@
       </nav>
 
       <!-- Action Button & Mobile Toggle -->
-      <div class="flex items-center gap-4 z-50">
+      <div class="flex items-center gap-4">
         <a href="https://discord.gg/G4wexgqC9" target="_blank" class="hidden md:flex px-5 py-2.5 bg-brandRed hover:bg-brandRedHover text-white text-xs font-extrabold uppercase tracking-wider rounded-md shadow-red-glow transition-all duration-300 transform hover:-translate-y-0.5 items-center">
           <i class="fa-brands fa-discord mr-2"></i>Discord
         </a>
         
-        <button id="mobile-menu-btn" class="lg:hidden text-gray-300 hover:text-white focus:outline-none p-2 ml-2">
+        <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="lg:hidden text-gray-300 hover:text-white focus:outline-none p-2 ml-2">
           <i class="fa-solid fa-bars text-2xl"></i>
         </button>
       </div>
     </div>
+  </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 bg-brandDark/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center lg:hidden">
-      <nav class="flex flex-col items-center gap-6 font-black text-lg uppercase tracking-widest text-gray-300 w-full px-6">
-        <a href="#home" class="mobile-link hover:text-brandRed transition-colors w-full text-center border-b border-gray-800 pb-3">Home</a>
-        <a href="#about" class="mobile-link hover:text-brandRed transition-colors w-full text-center border-b border-gray-800 pb-3">About</a>
-        <a href="#leaderboard" class="mobile-link hover:text-brandRed transition-colors w-full text-center border-b border-gray-800 pb-3">Leaderboard</a>
-        <a href="#achievements" class="mobile-link hover:text-brandRed transition-colors w-full text-center border-b border-gray-800 pb-3">Trophies</a>
-        <a href="#roster" class="mobile-link hover:text-brandRed transition-colors w-full text-center border-b border-gray-800 pb-3">Roster</a>
-        <a href="#streams" class="mobile-link hover:text-brandRed transition-colors w-full text-center border-b border-gray-800 pb-3">Streams</a>
-        <a href="#join" class="mobile-link hover:text-brandRed transition-colors w-full text-center pb-3 text-brandRed">Apply Now</a>
+  <!-- ================= MOBILE SIDEBAR DRAWER & OVERLAY ================= -->
+  <!-- Dark Backdrop Overlay -->
+  <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+
+  <!-- Slide-out Sidebar Panel -->
+  <aside id="mobile-menu" class="fixed top-0 right-0 w-72 sm:w-80 h-full bg-[#121217] border-l border-brandRed/30 z-50 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden flex flex-col justify-between p-6 shadow-2xl">
+    <div>
+      <!-- Drawer Header -->
+      <div class="flex items-center justify-between pb-6 border-b border-gray-800">
+        <div class="flex items-center gap-3">
+          <img src="Immortals Logo (1).jpg" alt="Logo" class="w-8 h-8 rounded-full border border-brandRed/40">
+          <span class="font-black text-white text-sm tracking-wider uppercase">IMMORTALS <span class="text-brandRed">ESPORT</span></span>
+        </div>
+        <button id="mobile-menu-close" aria-label="Close Menu" class="text-gray-400 hover:text-white p-2 focus:outline-none">
+          <i class="fa-solid fa-xmark text-2xl"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex flex-col gap-2 mt-6 font-bold text-sm uppercase tracking-wider text-gray-300">
+        <a href="#home" class="mobile-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-brandRed transition-colors">Home</a>
+        <a href="#about" class="mobile-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-brandRed transition-colors">About</a>
+        <a href="#leaderboard" class="mobile-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-brandRed transition-colors">Leaderboard</a>
+        <a href="#achievements" class="mobile-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-brandRed transition-colors">Trophies</a>
+        <a href="#roster" class="mobile-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-brandRed transition-colors">Roster</a>
+        <a href="#streams" class="mobile-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-brandRed transition-colors">Streams</a>
+        <a href="#news" class="mobile-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-brandRed transition-colors">News</a>
+        <a href="#merch" class="mobile-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-brandRed transition-colors">Merch</a>
+        <a href="#join" class="mobile-link px-3 py-2.5 rounded-lg bg-brandRed/10 text-brandRed hover:bg-brandRed hover:text-white transition-all mt-2">Apply Now</a>
       </nav>
-      <a href="https://discord.gg/G4wexgqC9" target="_blank" class="mt-6 px-8 py-3.5 bg-brandRed text-white text-sm font-extrabold uppercase tracking-wider rounded-md shadow-red-glow flex items-center">
-        <i class="fa-brands fa-discord mr-2 text-xl"></i>Join Discord Server
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="pt-6 border-t border-gray-800">
+      <a href="https://discord.gg/G4wexgqC9" target="_blank" class="w-full py-3 bg-brandRed hover:bg-brandRedHover text-white text-xs font-extrabold uppercase tracking-wider rounded-md shadow-red-glow flex items-center justify-center transition-all">
+        <i class="fa-brands fa-discord mr-2 text-lg"></i>Join Discord
       </a>
     </div>
-  </header>
+  </aside>
 
   <!-- ================= 2. HERO SECTION ================= -->
   <section id="home" class="relative pt-32 pb-16 md:pt-44 md:pb-32 overflow-hidden flex items-center justify-center min-h-[85vh]">
@@ -204,7 +231,7 @@
     </div>
   </section>
 
-
+  
   <!-- ================= 6. PRO ROSTER SECTION ================= -->
   <section id="roster" class="py-16 md:py-24 bg-[#0a0a0d] relative border-t border-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -237,7 +264,7 @@
           </div>
         </div>
 
-        <!-- LilBen -->
+        <!-- Siri -->
         <div class="bg-brandCard border border-gray-800 rounded-xl p-6 hover:border-brandRed hover:shadow-red-glow transition-all" data-aos="zoom-in" data-aos-delay="200">
           <div class="flex items-center justify-between mb-4">
             <span class="px-3 py-1 bg-gray-700 text-white text-xs font-bold uppercase rounded">Vice Leader</span>
@@ -260,7 +287,7 @@
           </div>
         </div>
 
-        <!-- Bright -->
+        <!-- LilBen -->
         <div class="bg-brandCard border border-gray-800 rounded-xl p-6 hover:border-brandRed hover:shadow-red-glow transition-all" data-aos="zoom-in" data-aos-delay="300">
           <div class="flex items-center justify-between mb-4">
             <span class="px-3 py-1 bg-gray-700 text-white text-xs font-bold uppercase rounded">Pro Member</span>
@@ -287,45 +314,7 @@
   </section>
 
 
-
-  <!-- ================= 5. ACHIEVEMENTS & TROPHIES ================= -->
-  <section id="achievements" class="py-16 md:py-24 bg-brandDark border-t border-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
-        <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-4">
-          TROPHY <span class="text-brandRed">CABINET</span>
-        </h2>
-        <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">Our competitive track record across regional Battle Royale tournaments and custom leagues.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-        <div class="bg-brandCard border border-gray-800 p-8 rounded-xl hover:border-brandRed transition-all duration-300 text-center group" data-aos="fade-up" data-aos-delay="100">
-          <i class="fa-solid fa-trophy text-4xl md:text-5xl text-yellow-500 mb-6 group-hover:scale-110 transition-transform"></i>
-          <h3 class="text-lg md:text-xl font-black text-white uppercase mb-2">BR Regional Cup 2023</h3>
-          <p class="text-brandRed font-bold text-xs uppercase tracking-wider mb-4">1st Place Champions</p>
-          <p class="text-gray-400 text-xs md:text-sm">Dominated 16 lobbies across 4 weekends to secure the regional Battle Royale crown.</p>
-        </div>
-
-        <div class="bg-brandCard border border-gray-800 p-8 rounded-xl hover:border-brandRed transition-all duration-300 text-center group" data-aos="fade-up" data-aos-delay="200">
-          <i class="fa-solid fa-medal text-4xl md:text-5xl text-brandRed mb-6 group-hover:scale-110 transition-transform"></i>
-          <h3 class="text-lg md:text-xl font-black text-white uppercase mb-2">10 Match Scrim Streak</h3>
-          <p class="text-brandRed font-bold text-xs uppercase tracking-wider mb-4">Undefeated Record</p>
-          <p class="text-gray-400 text-xs md:text-sm">Achieved 10 back-to-back victories against Tier 1 & 2 competitive clans in weekly custom scrims.</p>
-        </div>
-
-        <div class="bg-brandCard border border-gray-800 p-8 rounded-xl hover:border-brandRed transition-all duration-300 text-center group" data-aos="fade-up" data-aos-delay="300">
-          <i class="fa-solid fa-crown text-4xl md:text-5xl text-yellow-500 mb-6 group-hover:scale-110 transition-transform"></i>
-          <h3 class="text-lg md:text-xl font-black text-white uppercase mb-2">Top 20 Regional Rank</h3>
-          <p class="text-brandRed font-bold text-xs uppercase tracking-wider mb-4">CODM Leaderboard</p>
-          <p class="text-gray-400 text-xs md:text-sm">Consistently ranked among the top 20 Battle Royale clans in overall ladder points and kills.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  
-
-<!-- ================= 4. CLAN LEADERBOARD SECTION ================= -->
+  <!-- ================= 4. CLAN LEADERBOARD SECTION ================= -->
   <section id="leaderboard" class="py-16 md:py-24 bg-[#0a0a0d] border-t border-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -438,6 +427,41 @@
     </div>
   </section>
 
+
+  <!-- ================= 5. ACHIEVEMENTS & TROPHIES ================= -->
+  <section id="achievements" class="py-16 md:py-24 bg-brandDark border-t border-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-4">
+          TROPHY <span class="text-brandRed">CABINET</span>
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">Our competitive track record across regional Battle Royale tournaments and custom leagues.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div class="bg-brandCard border border-gray-800 p-8 rounded-xl hover:border-brandRed transition-all duration-300 text-center group" data-aos="fade-up" data-aos-delay="100">
+          <i class="fa-solid fa-trophy text-4xl md:text-5xl text-yellow-500 mb-6 group-hover:scale-110 transition-transform"></i>
+          <h3 class="text-lg md:text-xl font-black text-white uppercase mb-2">BR Regional Cup 2023</h3>
+          <p class="text-brandRed font-bold text-xs uppercase tracking-wider mb-4">1st Place Champions</p>
+          <p class="text-gray-400 text-xs md:text-sm">Dominated 16 lobbies across 4 weekends to secure the regional Battle Royale crown.</p>
+        </div>
+
+        <div class="bg-brandCard border border-gray-800 p-8 rounded-xl hover:border-brandRed transition-all duration-300 text-center group" data-aos="fade-up" data-aos-delay="200">
+          <i class="fa-solid fa-medal text-4xl md:text-5xl text-brandRed mb-6 group-hover:scale-110 transition-transform"></i>
+          <h3 class="text-lg md:text-xl font-black text-white uppercase mb-2">10 Match Scrim Streak</h3>
+          <p class="text-brandRed font-bold text-xs uppercase tracking-wider mb-4">Undefeated Record</p>
+          <p class="text-gray-400 text-xs md:text-sm">Achieved 10 back-to-back victories against Tier 1 & 2 competitive clans in weekly custom scrims.</p>
+        </div>
+
+        <div class="bg-brandCard border border-gray-800 p-8 rounded-xl hover:border-brandRed transition-all duration-300 text-center group" data-aos="fade-up" data-aos-delay="300">
+          <i class="fa-solid fa-crown text-4xl md:text-5xl text-yellow-500 mb-6 group-hover:scale-110 transition-transform"></i>
+          <h3 class="text-lg md:text-xl font-black text-white uppercase mb-2">Top 20 Regional Rank</h3>
+          <p class="text-brandRed font-bold text-xs uppercase tracking-wider mb-4">CODM Leaderboard</p>
+          <p class="text-gray-400 text-xs md:text-sm">Consistently ranked among the top 20 Battle Royale clans in overall ladder points and kills.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- ================= 7. STREAMS & HIGHLIGHTS SECTION ================= -->
@@ -716,27 +740,29 @@
       once: true,
     });
 
-    // Mobile Navigation Toggle
+    // Mobile Navigation Drawer Toggle
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
-    const icon = btn.querySelector('i');
+    const overlay = document.getElementById('mobile-menu-overlay');
+    const closeBtn = document.getElementById('mobile-menu-close');
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
-    function toggleMenu() {
-      menu.classList.toggle('translate-x-full');
-      if(menu.classList.contains('translate-x-full')) {
-        icon.classList.remove('fa-xmark');
-        icon.classList.add('fa-bars');
-        document.body.style.overflow = 'auto';
-      } else {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-xmark');
-        document.body.style.overflow = 'hidden';
-      }
+    function openMenu() {
+      menu.classList.remove('translate-x-full');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
     }
 
-    btn.addEventListener('click', toggleMenu);
-    mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+    function closeMenu() {
+      menu.classList.add('translate-x-full');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'auto';
+    }
+
+    btn.addEventListener('click', openMenu);
+    if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if(overlay) overlay.addEventListener('click', closeMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
   </script>
 </body>
 </html>
